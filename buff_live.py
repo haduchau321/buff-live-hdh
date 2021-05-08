@@ -22,6 +22,7 @@ class main_buff(object):
 
     def __init__(self,cookie):
         jcookies = literal_eval('{"' + cookie.strip().replace('	', '').replace(' ', '').replace(';', '", "').replace('=', '": "') + '"}')
+        return jcookies
         self.s = requests.session()
         self.s.cookies.update(jcookies)
         self.s.headers.update({'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'})
@@ -40,7 +41,6 @@ class main_buff(object):
 
     def get_data(self):
         data = self.s.get(f'https://www.facebook.com/')
-        return data.text
         self.jazoest = self.find_string(str(data.text),'<input type="hidden" name="jazoest" value="','"')
         self.fb_dtsg = self.find_string(str(data.text),'<input type="hidden" name="fb_dtsg" value="','"')
         return {'id_sy':self.fb_dtsg,'id_post':self.jazoest}
