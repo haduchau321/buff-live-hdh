@@ -41,6 +41,7 @@ class main_buff(object):
 
     def get_data(self):
         data = self.s.get(f'https://www.facebook.com/')
+        print(data.text)
         self.jazoest = self.find_string(str(data.text),'<input type="hidden" name="jazoest" value="','"')
         self.fb_dtsg = self.find_string(str(data.text),'<input type="hidden" name="fb_dtsg" value="','"')
         return {'id_sy':self.fb_dtsg,'id_post':self.jazoest}
