@@ -4,7 +4,6 @@ app = FastAPI()
 
 @app.get('/get_data/cookies={cookies}')
 async def get_id_sy_id_post(cookies:str):
-    return cookies
     b = buff_live.main_buff(cookies)
     out = b.get_data()
     return out
