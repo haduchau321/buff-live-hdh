@@ -22,7 +22,7 @@ class main_buff(object):
 
     def __init__(self,cookie):
         jcookies = literal_eval('{"' + cookie.strip().replace('	', '').replace(' ', '').replace(';', '", "').replace('=', '": "') + '"}')
-        return jcookies
+        print(jcookies)
         self.s = requests.session()
         self.s.cookies.update(jcookies)
         self.s.headers.update({'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'})
